@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\evento_inventario;
+use App\Eventos;
+use App\Inventario;
 use Laracasts\Flash\Flash;
 class AsignarImplementoController extends Controller
 {
@@ -69,7 +71,11 @@ class AsignarImplementoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $eve = Eventos::find($id);
+        $inven = Inventario::all();
+        return view('evento.agregarImplemento')
+            ->with('eve',$eve)
+            ->with('inven',$inven);
     }
 
     /**
@@ -81,7 +87,15 @@ class AsignarImplementoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $eve = Eventos::find($id);
+        foreach ($request->implemento as $imp) {
+            $ei = new evento_inventario;
+            $ei->evento_id=$id;
+            $ei->inventario_id=$imp;
+            $ei->save();
+        }
+        flash::info('Se han asignado nuevos implementos al evento: <b>' .$eve->nombre. '</b>');
+        return redirect()->route('evento.index');
     }
 
     /**

@@ -39,7 +39,11 @@
 				<td><label class="label label-default" style="font-size:1em">{{ $eve->cant_participante }}</label></td>
 			</tr>
 			<tr>
-				<td colspan="4" align="center"><label><i class="fa fa-smile-o"> Personal que participaran en el evento <i class="fa fa-smile-o"></label></td>
+				<td colspan="4" align="center"><label><i class="fa fa-smile-o"></i> Personal que participaran en el evento <i class="fa fa-smile-o"></i></label>
+				<a href="{{ route('asignar.edit', $eve->id) }}" title="agregar mas" class="btn btn-info">
+					<i class="fa fa-group" style="font-size:1.3em"></i>
+				</a>
+				</td>
 			</tr>
 			@foreach($usu as $u)
 				<tr>
@@ -51,7 +55,10 @@
 				</tr>
 			@endforeach
 			<tr>
-				<td colspan="4" align="center"><label><i class="fa fa-soccer-ball-o"> Implementos <i class="fa fa-soccer-ball-o"></label></td>
+				<td colspan="4" align="center"><label><i class="fa fa-soccer-ball-o"></i> Implementos <i class="fa fa-soccer-ball-o"></i>
+					<a href="{{ route('implementos.edit', $eve->id) }}" class="btn btn-warning" title="Agregar Implementos"><i class="fa fa-trophy" style="font-size: 1.3em"></i></a>
+				</label>	
+				</td>
 			</tr>
 			@foreach($inv as $i)
 				<tr>
