@@ -39,7 +39,6 @@ class EventoController extends Controller
            //$even = Eventos::orderBy('ID','ASC')->paginate(10);
             $even = DB::table('eventos')
                 ->select('*')
-                ->rightJoin('usuario_evento', 'usuario_evento.evento_id','=', 'eventos.id')
                 ->paginate(10);
                 
             return view('evento.index')
@@ -68,15 +67,19 @@ class EventoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(EventoRequest $request)
-    {
+    {   
+        //dd($request->all());
         
         $cli = Cliente::find($request->idCliente);
         $even = new Eventos;
         $even->fill($request->all());
-        $even->fecha_inicio = $request->fecha_inicio;
-        $even->fecha_fin = $request->fecha_fin;
+        //$even->fecha_inicio = $request->fecha_inicio;
+        //$even->fecha_fin = $request->fecha_fin;
         $even->cliente_id=$request->idCliente;
-        $even->responsable = $request->responsable;
+        //$even->responsable = $request->responsable;
+        $even->hora_inicio = str_replace(" ", "", $even->hora_inicio);
+        $even->hora_fin = str_replace(" ", "", $even->hora_fin);
+       // dd($even);
         $even->save();
         return redirect()->route('evento.asignaU',['id'=>$request->idCliente,'id2'=>$even->id]);
     }

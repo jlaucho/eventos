@@ -5,6 +5,7 @@
 @section('titulo', 'Listado de Usuarios')
 
 @section('content')
+
 	
 	<table class="table table-hover">
 		<tbody>

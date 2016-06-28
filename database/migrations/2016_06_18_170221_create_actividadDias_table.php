@@ -17,7 +17,7 @@ class CreateActividadDiasTable extends Migration
             $table->integer('evento_id')->unsigned();
             $table->date('fecha');
             $table->longText('actividades');
-             $table->foreign('evento_id')
+            $table->foreign('evento_id')
                 ->references('id')
                 ->on('eventos')
                 ->onDelete('cascade')

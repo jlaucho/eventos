@@ -8,7 +8,7 @@ class Eventos extends Model
 {
     protected $table = 'eventos';
     protected $fillable = [
-    'nombre', 'tipo_evento', 'cant_participante', 'fecha_inicio', 'fecha_fin', 'hora_inicio', 'hora_fin', 'telf_responsable', 'cliente_id'
+    'nombre', 'tipo_evento', 'cant_participante', 'fecha_inicio', 'fecha_fin', 'hora_inicio', 'hora_fin', 'telf_responsable', 'cliente_id', 'responsable'
     ];
     
     public function cliente()

@@ -20,6 +20,7 @@
 					</td>
 				</tr>
 			@else 
+
 				@foreach($evento as $e)
 					<tr>
 						<td>{{ $e->nombre }} </td>

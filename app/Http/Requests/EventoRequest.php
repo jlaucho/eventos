@@ -26,7 +26,7 @@ class EventoRequest extends Request
         return [
             'nombre'    =>'required|min:4|max:100',
             'tipo_evento'   =>'required|min:4|max:200',
-            'cant_participante' =>'required|numeric|max:3',
+            'cant_participante' =>'required|numeric',
             'fecha_inicio'      =>'required|date',
             'fecha_fin'         =>'required|date'
 
